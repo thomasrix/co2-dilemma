@@ -23,6 +23,12 @@ function selectAll (s, e = document){
     // Shortcut to select dom elements
     return e.querySelectorAll(s);
 }
+function setAttributes(el, attrs) {
+    for(var key in attrs) {
+        el.setAttribute(key, attrs[key]);
+    }
+}
+
 function linearInterpolate(norm, min, max){
     return (max - min) * norm + min;
 }
@@ -71,10 +77,10 @@ function isIE(){
 }
 
 function addThousandsSeperators(x) {
-        var parts = x.toString().split(",");
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        return parts.join(",");
-    }
+    var parts = x.toString().split(",");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return parts.join(",");
+}
 function easeInOutSine(t, b, c, d){
     // t: current time, b: begInnIng value, c: change In value, d: duration
     return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
@@ -94,4 +100,4 @@ function easeOutSine(t, b, c, d){
 }
 
 
-export { create, select, selectAll, linearInterpolate, normalize, clamp, fetchFile, isTouchSupported, prepath, isIE, addThousandsSeperators, easeInOutSine, easeOutIn, easeInSine, easeOutSine}
+export { create, select, selectAll, setAttributes, linearInterpolate, normalize, clamp, fetchFile, isTouchSupported, prepath, isIE, addThousandsSeperators, easeInOutSine, easeOutIn, easeInSine, easeOutSine}
