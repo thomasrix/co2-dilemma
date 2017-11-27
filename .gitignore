@@ -1,0 +1,11 @@
+# Dependency directories
+node_modules
+# Files
+.DS_Store
+# Development directories
+grafik
+content
+# Output directories
+dist
+temp
+dev
