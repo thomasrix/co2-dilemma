@@ -2,6 +2,7 @@
 
 import BeefSlider from './beef-slider';
 import PlaneSlider from './plane-slider';
+import CarSlider from './car-slider';
 import TotalLevel from './total-level';
 
 export default class CO2Dilemma{
@@ -16,21 +17,23 @@ export default class CO2Dilemma{
             max:7,
             level:7,
             step:1,
-            co2amount:2,
-            label:'Køddage om ugen',
+            co2amount:260,
+            label:'Køddage om ugen:',
             container:this.container
         }, this.updateLevel.bind(this));
+
         
-        const plane = new PlaneSlider({
+        const car = new CarSlider({
             min:0,
-            max:50,
+            max:20,
             level:5,
             step:1,
-            co2amount:20,
-            label: 'Hvor mange flyver du om året',
+            co2amount:69.35,
+            label: 'Hvor kilometer i bil om dagen',
             container:this.container
-        }, this.updateLevel.bind(this))
-        this.sliders = [beef, plane];
+        }, this.updateLevel.bind(this));
+
+        this.sliders = [beef, car];
 
         this.totalLevelDisplay = new TotalLevel(this.container);
     }
@@ -39,7 +42,7 @@ export default class CO2Dilemma{
         this.sliders.forEach(element=>{
             this.totalLevel += (element.config.level * element.config.co2amount);
         })
-        this.totalLevelDisplay.update(this.totalLevel);
+        this.totalLevelDisplay.update(this.totalLevel.toFixed(0));
         console.log('Samlet CO2: ',this.totalLevel);
     }
 }
